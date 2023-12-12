@@ -3,14 +3,11 @@ import os
 import nltk
 import re
 import json
+nltk.download('stopwords')
+nltk.download('punkt')
 from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize
 
-def nltk_init():
-    '''Initializes NLTK resources needed to remove stopwords'''
-    nltk.download('stopwords')
-    nltk.download('punkt')
-    
 def read_all_pdfs(path: str):
     '''Returns a list of all pdfs in a given path'''
     return [os.path.join(path, f) for f in os.listdir(path) if f.endswith(".pdf")]
@@ -145,7 +142,6 @@ def start():
         display_results(results)
 
 def main():
-    nltk_init()
     pdfs = retrieve_pdfs('PDF Resources')
     process_pdfs(pdfs)
     #tk_init()
